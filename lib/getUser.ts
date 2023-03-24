@@ -1,9 +1,14 @@
 const getUser = async (userId: string) => {
   const res = await fetch(
-    `http://jsonplaceholder.typicode.com/users/${userId}`
+    `http://jsonplaceholder.typicode.com/users/${userId}`,{
+      next: {
+        revalidate: 60,
+      }
+    }
   );
   if (!res.ok) {
-    throw new Error(`Failed to fetch user ${userId}}`);
+    // avoid throwing an error,
+    return undefined;
   }
 
   return res.json();

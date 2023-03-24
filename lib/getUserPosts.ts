@@ -3,7 +3,8 @@ const getUserPosts = async (userId: string) => {
       `http://jsonplaceholder.typicode.com/posts?userId=${userId}`
     );
     if (!res.ok) {
-      throw new Error(`Failed to fetch user ${userId}}'s posts`);
+      // avoid throwing an error,
+      return undefined;
     }
     
     return res.json();
