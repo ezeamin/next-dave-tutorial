@@ -1,13 +1,20 @@
-import Link from 'next/link';
+import { fetchFn } from '@/lib/fetchFn';
 import styles from './page.module.css';
 
-export default function Home() {
+const Home = async () => {
+  const { isSuccess, isError, error, data } = await fetchFn<object>({
+    url: 'http://localhost:3000/api/hello',
+  });
+
   return (
     <main className={styles.main}>
       <h1>Home page</h1>
       <p>
-        <Link href='/users'>Users</Link>
+        {JSON.stringify(data)}
+        {data?.toString()}
       </p>
     </main>
   );
-}
+};
+
+export default Home;
