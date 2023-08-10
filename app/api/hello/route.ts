@@ -12,7 +12,7 @@ export async function GET(request: Request) {
   //     resolve(NextResponse.json({ message: 'Hello, Next.js!' }));
   //   }, 2000);
   // });
-  return NextResponse.json(JSON.stringify({ message: 'Hello, Next.js!' }), {
+  return NextResponse.json(JSON.stringify({ text: 'Hello, Next.js!' }), {
     status: 200,
   });
 }
